@@ -5,7 +5,7 @@ const AppHeader = () => (
   <AppBar position="static">
     <Toolbar>
       <Typography variant="title" color="inherit">
-        My React App
+        Race Scorer App
       </Typography>
     </Toolbar>
   </AppBar>

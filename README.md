@@ -35,9 +35,9 @@ module.exports = function(app) {
       - StartingRoster.css
     - FinalResults
       - FinalResults.js
-    - Athlete/
-      - Athlete.js
-      - Athlete.css
+    - AthleteAdder/
+      - AthleteAdder.js
+      - AthleteAdder.css
 
 ### dependencies
 
@@ -60,7 +60,7 @@ module.exports = function(app) {
 
 ### endpoints
 
-- get: (get all athlete) `/api/startlist/get`
+- get: (get all athlete) `/api/people/get`
 
 - get: (get final results) `/api/resultslist/get`
 

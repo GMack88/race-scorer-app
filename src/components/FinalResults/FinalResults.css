@@ -1,0 +1,11 @@
+.FinalResults {
+  width: 100px;
+}
+p {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+}

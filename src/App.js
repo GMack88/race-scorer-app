@@ -13,6 +13,7 @@ class App extends Component {
       startingRoster: []
     };
     this.submitAthlete = this.submitAthlete.bind(this);
+    this.removeAthlete = this.removeAthlete.bind(this);
   }
 
   componentDidMount() {
@@ -38,6 +39,14 @@ class App extends Component {
       });
     });
   }
+  removeAthlete(id) {
+    axios.delete(`/api/delete/${id}`).then(res => {
+      console.log(res.data);
+      this.setState({
+        startingRoster: res.data
+      });
+    });
+  }
 
   render() {
     return (
@@ -51,7 +60,10 @@ class App extends Component {
               <AthleteAdder addFn={this.submitAthlete} />
             </div>
             <ul className="StartingRoster">
-              <StartingRoster roster={this.state.startingRoster} />
+              <StartingRoster
+                roster={this.state.startingRoster}
+                delete={this.removeAthlete}
+              />
             </ul>
           </div>
         </div>

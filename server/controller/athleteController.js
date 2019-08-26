@@ -26,5 +26,16 @@ module.exports = {
     };
     data.push(newAthlete);
     res.status(200).send(data);
+  },
+
+  deleteAthlete: (req, res) => {
+    let index = data.findIndex((val, index) => {
+      return val.id === Number(req.params.id);
+    });
+
+    data.splice(index, 1);
+
+    res.status(200).send(data);
   }
 };
+//use the index you find to splice

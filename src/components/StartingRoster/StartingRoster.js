@@ -11,8 +11,6 @@ export default class StartingRoster extends Component {
     };
   }
 
-  onClick() {}
-
   myadder(athlete) {
     this.setState({
       finalResult: [...this.state.finalResult, athlete]
@@ -32,6 +30,15 @@ export default class StartingRoster extends Component {
               <div className="athlete-image">
                 <img src={athlete.athleteImage} />
               </div>
+              <button
+                onClick={e => {
+                  e.stopPropagation();
+                  console.log("hit");
+                  this.props.delete(athlete.id);
+                }}
+              >
+                X
+              </button>
             </div>
           </div>
         </div>
@@ -53,10 +60,12 @@ export default class StartingRoster extends Component {
       );
     });
     return (
-      <div>
+      <div className="main">
         <div>{mappedStartingAthletes}</div>
-        <h1>Results</h1>
-        <div>{mappedEndingAthletes}</div>
+        <div>
+          <h1>Results</h1>
+          <div>{mappedEndingAthletes}</div>
+        </div>
       </div>
     );
   }

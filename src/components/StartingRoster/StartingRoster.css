@@ -27,3 +27,10 @@ div {
   padding: 5px;
   border-radius: 35px;
 }
+
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}

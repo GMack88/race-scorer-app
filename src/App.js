@@ -2,29 +2,62 @@ import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
 import AthleteAdder from "./components/AthleteAdder/AthleteAdder";
-import FinalResults from "./components/FinalResults/FinalResults";
 import Header from "./components/Header/Header";
 import StartingRoster from "./components/StartingRoster/StartingRoster";
 
-function App() {
-  return (
-    <div className="App">
-      <div className="App-header">
-        <Header />
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      startingRoster: []
+    };
+    this.submitAthlete = this.submitAthlete.bind(this);
+  }
+
+  componentDidMount() {
+    axios.get("/api/people").then(response => {
+      console.log(response.data);
+      this.setState({
+        startingRoster: response.data
+      });
+    });
+  }
+
+  submitAthlete(athleteName, athleteImage) {
+    const newAthlete = {
+      athleteName,
+      athleteImage
+    };
+    console.log(athleteName);
+
+    axios.post("/api/newathlete", newAthlete).then(response => {
+      console.log(response.data);
+      this.setState({
+        startingRoster: response.data
+      });
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="App-header">
+          <Header />
+        </div>
+        <div className="App">
+          <div className="left-column">
+            <div className="AthleteAdder">
+              <AthleteAdder addFn={this.submitAthlete} />
+            </div>
+            <ul className="StartingRoster">
+              <StartingRoster roster={this.state.startingRoster} />
+            </ul>
+          </div>
+        </div>
       </div>
-      <body>
-        <div className="AthleteAdder">
-          <AthleteAdder />
-        </div>
-        <div className="StartingRoster">
-          <StartingRoster />
-        </div>
-        <div className="FinalResults">
-          <FinalResults />
-        </div>
-      </body>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

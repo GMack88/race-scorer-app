@@ -1,5 +1,5 @@
 const data = require("../data.json");
-let userId = 1;
+let userId = 26;
 module.exports = {
   getAthletes: (req, res, next) => {
     console.log("hit");
@@ -18,10 +18,10 @@ module.exports = {
   },
 
   postAthlete: (req, res, next) => {
-    const { id, athleteImage, athlete } = req.body;
+    const { athleteImage, athleteName } = req.body;
     const newAthlete = {
       id: userId++,
-      athlete,
+      athleteName,
       athleteImage
     };
     data.push(newAthlete);

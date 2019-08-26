@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const data = require("./data.json");
+const athleteController = require("./controller/athleteController");
 
 app.use(express.json());
 
@@ -10,11 +11,7 @@ app.get("/api/people", (req, res) => {
 
 // app.get("/api/")
 
-// app.post("/api/newathlete" (req, res) => {
-//   res.
-// });
-
-// app.post("/api/startlist/create", athleteController.postAthlete);
+app.post("/api/newathlete", athleteController.postAthlete);
 
 app.put("/api/resultslist/update/:id");
 

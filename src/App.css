@@ -16,10 +16,19 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-body {
+.left-column {
   display: flex;
+  flex-direction: column;
 }
-
 .App-link {
   color: #61dafb;
+}
+
+.StartingRoster {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
+  align-content: space-around;
 }

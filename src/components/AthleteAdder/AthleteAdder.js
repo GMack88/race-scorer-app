@@ -13,7 +13,7 @@ export default class AthleteAdder extends Component {
     };
   }
   onClick() {
-    alert("Athlete Added");
+    // alert("Athlete Added");
   }
   onChange(event) {
     console.log(event.target.value);
@@ -39,20 +39,24 @@ export default class AthleteAdder extends Component {
       });
     });
   }
+  // turn app into a class then add starting athletes
+  // as state to that class then move the add function
+  // into app and pass it to this function as a prop,
+  // in the form onsubmit to use the prop function
 
   render() {
-    const { atheleteImage } = this.state;
+    const { athleteImage, name } = this.state;
     return (
       <div className="AthleteAdder">
         <h2>{this.state.title}</h2>
-        <button onClick={this.onClick}>Add</button>
 
         <form
           onSubmit={e => {
             e.preventDefault();
-            this.submitAthlete();
+            this.props.addFn(name, athleteImage);
           }}
         >
+          <button>add</button>
           <input
             placeholder="Athlete Name"
             onChange={e => this.athleteInput("name", e.target.value)}
@@ -60,7 +64,7 @@ export default class AthleteAdder extends Component {
           <input
             placeholder="Athlete Image"
             onChange={e => this.athleteInput("athleteImage", e.target.value)}
-            value={atheleteImage}
+            value={athleteImage}
           />
         </form>
       </div>
